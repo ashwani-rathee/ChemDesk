@@ -10,28 +10,28 @@ def home(request):
     return HttpResponse('<h1>Blog Home</h1>')
 # Create your views here.
 def getmol(request):
-    cmd = "./chemdesk/imago_console chemdesk/input/data.png -o chemdesk/result/data.mol"
+    cmd = "./structures/imago_console structures/input/data.png -o structures/result/data.mol"
     returned_value = os.system(cmd)
     print(returned_value)
     return HttpResponse('Success')
 
 def moltosmile(request):
-    m = Chem.MolFromMolFile('chemdesk/result/data.mol')
+    m = Chem.MolFromMolFile('structures/result/data.mol')
     smile = Chem.MolToSmiles(m)
     print(smile)
     return HttpResponse(smile)
 
 
 # Create your views here.
-def chemdesk_view(request):
+def structures_view(request):
     if request.method == 'POST':
-        form = chemdeskform(request.POST, request.FILES)
+        form = structuresform(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
             return redirect('success')
     else:
-        form = chemdeskform()
+        form = structuresform()
     return render(request, 'form.html', {'form': form})
 
 
