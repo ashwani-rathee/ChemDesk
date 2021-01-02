@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from .forms import *
 import os
 from rdkit import Chem
+import imolecule
 
 def home(request):
     if request.method == 'POST':
@@ -17,6 +18,8 @@ def home(request):
         form = structuresform()
     return render(request, 'home.html',{'form': form})
 # Create your views here.
+def index(request):
+    return render(request, 'index.html')
 
 def data(request):
     cmd = "./structures/imago_console structures/media/imagees/data.png -o structures/result/data.mol"

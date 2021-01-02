@@ -4,6 +4,7 @@ from structures import views
 urlpatterns = [
     path('', views.home, name='chem-desk'),
     path('input', views.getmol, name='getmol'),
+    path('index', views.index, name='index'),
     path('smile', views.moltosmile, name='moltosmile'),
     path('image_upload', views.structures_view, name='image_upload'),
     path('success', views.success, name='success'),
