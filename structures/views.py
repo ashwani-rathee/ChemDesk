@@ -22,23 +22,29 @@ def index(request):
     return render(request, 'index.html')
 
 def data(request):
-    cmd = "./structures/imago_console structures/media/imagees/data.png -o structures/result/data.mol"
+    cmd = "java -jar ./structures/molvec-0.9.8-jar-with-dependencies.jar molvec -f ./structures/input/aldehyde.jpeg -o ./structures/result/aldehyde.mol"
     returned_value = os.system(cmd)
-    m = Chem.MolFromMolFile('structures/result/data.mol')
+    m = Chem.MolFromMolFile('structures/result/aldehyde.mol')
     smile = Chem.MolToSmiles(m)
     return HttpResponse(smile)
 def getmol(request):
-    cmd = "./structures/imago_console structures/input/data.png -o structures/result/data.mol"
+    cmd = "java -jar ./structures/molvec-0.9.8-jar-with-dependencies.jar molvec -f ./structures/input/aldehyde.jpeg -o ./structures/result/aldehyde.mol"
     returned_value = os.system(cmd)
     print(returned_value)
     return HttpResponse('Success')
 
 def moltosmile(request):
-    m = Chem.MolFromMolFile('structures/result/data.mol')
+    m = Chem.MolFromMolFile('structures/result/aldehyde.mol')
     smile = Chem.MolToSmiles(m)
     print(smile)
     return HttpResponse(smile)
 
+def moltopdb(request):
+    m = Chem.MolFromMolFile('structures/result/aldehyde.mol')
+    m = Chem.AddHs(m)
+    x=Chem.rdmolfiles.MolToPDBFile(m, filename='aldehyde.pdb')
+    print(x)
+    return HttpResponse(x)
 
 # Create your views here.
 def structures_view(request):
