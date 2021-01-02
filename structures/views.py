@@ -7,8 +7,23 @@ import os
 from rdkit import Chem
 
 def home(request):
-    return HttpResponse('<h1>Blog Home</h1>')
+    if request.method == 'POST':
+        form = structuresform(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('data')
+    else:
+        form = structuresform()
+    return render(request, 'home.html',{'form': form})
 # Create your views here.
+
+def data(request):
+    cmd = "./structures/imago_console structures/media/imagees/data.png -o structures/result/data.mol"
+    returned_value = os.system(cmd)
+    m = Chem.MolFromMolFile('structures/result/data.mol')
+    smile = Chem.MolToSmiles(m)
+    return HttpResponse(smile)
 def getmol(request):
     cmd = "./structures/imago_console structures/input/data.png -o structures/result/data.mol"
     returned_value = os.system(cmd)

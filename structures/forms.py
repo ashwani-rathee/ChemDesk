@@ -6,4 +6,4 @@ class structuresform(forms.ModelForm):
 
 	class Meta:
 		model = structures1
-		fields = ['name', 'hotel_Main_Img']
+		fields = ['name', 'chemical_img']
