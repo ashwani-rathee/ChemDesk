@@ -44,4 +44,8 @@ python manage.py migrate
 python manage.py runserver
 ```
 References:
-
+## Important Links:
+<li>1)[Kekule.js](http://partridgejiang.github.io/Kekule.js/)</li>
+<li>2)[Molvec.jar](https://github.com/ncats/molvec)</li>
+<li>3)[PubChemPy](https://pubchempy.readthedocs.io/en/latest/)</li>
+<li>4)[NYNH2021](https://newyearnewhack.devpost.com/)</li>
