@@ -36,7 +36,7 @@
 		}
 	</style>
 
-    <link id="mol2" href="{% static 'aldehyde.mol' %}" type="chemical/x-mdl-molfile" />
+    <link id="mol2" href="{% static 'data.mol' %}" type="chemical/x-mdl-molfile" />
 	<script name="mol1" id="mol1" type="chemical/x-mdl-molfile">
 Untitled Document-2
   Kekule  07101201153D
@@ -82,9 +82,10 @@ M  END
 	</script>
 </head>
 <body>
-	<div id="chemViewer" style="width:1000px;height:650px"
+
+	<div class="container-fluid" id="chemViewer" style="width:1000px;height:650px"
 			 data-widget="Kekule.ChemWidget.Viewer3D" data-enable-toolbar="true" data-auto-size="false" data-padding="20"
 			 data-toolbar-evoke-modes="[0]"
-			 data-chem-obj="url(#mol2)"></div
+			 data-chem-obj="url(#mol2)"></div>
 </body>
 </html>
