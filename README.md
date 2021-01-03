@@ -18,16 +18,22 @@ To run this project locally, follow the steps:
 Solves general chemical problems
 Ubuntu 20.04 focal fossa with python.3.8
 - Install Anaconda
+```
 wget -P /tmp https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
 bash /tmp/Anaconda3-2020.02-Linux-x86_64.sh
 source ~/.bashrc
+```
+
  Accept the conda init prompt and this should install conda
  
 - Create a environment with 
+```
 conda create --name chemdesk python=3.7
 conda activate chemdesk
+```
 
-- Install Django and you 
+- Install Django and some dependencies
+```
 pip install django
 pip install pubchempy
 conda install -c conda-forge rdkit
@@ -36,6 +42,6 @@ cd ChemDesk/
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
-
+```
 References:
 
