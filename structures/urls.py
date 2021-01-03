@@ -11,4 +11,5 @@ urlpatterns = [
     path('moltopdb',views.moltopdb,name='moltopdb'),
     path('periodic_table',views.periodic_table,name='periodic_table'),
     path('viewer',views.viewer,name='viewer'),
+    path('about_us',views.about_us,name='about_us')
 ]

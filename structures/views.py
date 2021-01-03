@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from .forms import *
 from rdkit import Chem
 import os
+import pubchempy as pcp
 
 # Create your views here.
 def index(request):
@@ -76,4 +77,10 @@ def periodic_table(request):
     return render(request,'structures/periodic_table.html')
 
 def viewer(request):
+    m = Chem.MolFromMolFile('structures/result/aldehyde.mol')
+    smile = Chem.MolToSmiles(m)
+    c = pcp.Compound.from_cid(5000)
+    print(c.molecular_formula,"  ",c.molecular_weight)
     return render(request,'structures/viewer.html')
+def about_us(request):
+    return render(request,'structures/about_us.html')
