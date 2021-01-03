@@ -66,7 +66,7 @@ body {
 
 .textInfo h3 {
     font-weight: 300;
-    font-size: 18px;
+    font-size: 22px;
     text-shadow: 2px 2px 4px #000;
     margin: 3% 0;
 }
@@ -101,8 +101,13 @@ body {
 
 .viewerSection {
     background: #fff;
-    width: 50%;
+    width: 70%;
     transition: 0.5s;
     height: 100%;
     opacity: 0;
+}
+
+#chemViewer {
+    width: 100% !important;
+    height: 97vh !important;
 }

@@ -17,6 +17,8 @@ def index(request):
         filename = fs.save(myfile.name, myfile)
         cmd = "java -jar ./structures/molvec-0.9.8-jar-with-dependencies.jar molvec -f ./structures/media/" + filename +" -o ./structures/static/data.mol"
         result = os.system(cmd)
+        cmd1 = "cp ./structures/media/"+filename+" structures/static/image.png"
+        result = os.system(cmd1)
         if result == 0:
             cmd = "rm ./structures/media/" + filename
             os.system(cmd)
@@ -81,6 +83,17 @@ def viewer(request):
     smile = Chem.MolToSmiles(m)
     c = pcp.Compound.from_cid(5000)
     print(c.molecular_formula,"  ",c.molecular_weight)
-    return render(request,'structures/viewer.html')
+    context = {
+        'iupac_name': c.iupac_name,
+        'smiles': c.canonical_smiles,
+        'pubchemcid': c.cid,
+        'Molecular_formula': c.molecular_formula,
+        'Molecular_weight': c.molecular_weight,
+        'formalcharge': c.charge,
+        'toxicity': True,
+        'solubility': True,
+    }
+    return render(request,'structures/viewer.html', context)
+
 def about_us(request):
     return render(request,'structures/about_us.html')
