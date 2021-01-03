@@ -1,4 +1,7 @@
 # ChemDesk
+<i>This repository is for our team's project for hackathon at NYNH2021</i>
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com)
+
 Chemoinformatics is an established discipline focusing on extracting, processing and extrapolating meaningful data from chemical structures. With the rapid explosion of chemical ‘big’ data from HTS and combinatorial synthesis, machine learning has become an indispensable tool for drug designers to mine chemical information from large compound databases to design drugs with important biological properties. 
 
 ChemDesk is a tool that can be used to see details about a particular compound of interest:
@@ -49,3 +52,5 @@ References:
 <li>2)[Molvec.jar](https://github.com/ncats/molvec)</li>
 <li>3)[PubChemPy](https://pubchempy.readthedocs.io/en/latest/)</li>
 <li>4)[NYNH2021](https://newyearnewhack.devpost.com/)</li>
+
+## License: MIT LICENSE
