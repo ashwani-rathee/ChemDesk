@@ -9,24 +9,42 @@
     {% load static %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'structures/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'structures/css/navbar.css' %}">
       <script src="{% static 'structures/css/main.css' %}"></script>
+    
 
   </head>
 
   <body>
+    
+
   <div id="loader">
     <!-- <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_Gh0AU0.json"  background="#0a192f"  speed="1.5"  style="z-index: 999;"  loop autoplay></lottie-player> -->
     <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_P6bIYx.json"  background="#0a192f"  speed="0.8"  style="z-index: 999"  loop  autoplay></lottie-player>
   </div>
+  <div class="container-fluid">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+    <span style="font-size:50px;cursor:pointer;color: aliceblue;" onclick="openNav()">&#9776;</span>
+  </div>
   <div class="HomeSection">
     <div class="Info getInfo">
       <div class="beforeStart">
+        
+        
         <h1>CHEM<span>DESK</span></h1>
         <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_ftbdegwh.json"  background="transparent"  speed="0.5"  style="width: 320px; height: 320px; margin: 0% auto;"  loop  autoplay></lottie-player>
         <!--   <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_X2u2xK.json"  background="transparent"  speed="1"  style="width: 200px;  height: 200px; margin: 4% auto;"  loop  autoplay></lottie-player> -->
         <p class="bDescription">ChemDesk is a utility designed to convert graphical representations of chemical structures, as they appear in journal articles, patent documents, textbooks, trade magazines etc., into SMILES (Simplified Molecular Input Line Entry Specification - see http://en.wikipedia.org/wiki/SMILES) or SD files - a computer recognizable molecular structure format.</p>
         <div class="uploadBtn" onClick="getSecondView()">Get Started</div>
       </div>
+      
+      
       <div class="afterStart">
           <iframe width="640" height="360" src="https://www.youtube.com/embed/0g8lANs6zpQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <h1>C<span>D:</span> Chem<span>Desk</span></h1>
@@ -58,6 +76,7 @@
   <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script type="text/javascript" src="{% static 'structures/js/script.js' %}"></script>
+  <script type="text/javascript" src="{% static 'structures/js/navbar.js' %}"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init({
