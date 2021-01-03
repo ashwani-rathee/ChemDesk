@@ -32,13 +32,14 @@
         <p class="aDescription">ChemDesk can read a document in any of the over 90 graphical formats parseable by ImageMagick - including GIF, JPEG, PNG, TIFF, PDF, PS etc., and generate the SMILES or SDF representation of the molecular structure images encountered within that document.</p>
         <h2>UPLOAD IMAGE</h2>
         <form method="POST" enctype="multipart/form-data" class="form" action="">
-          <div class="uploadBtn" onClick="getFile()">Choose File</div>
-          <p class="fileName">No file chosen</p>
-          <div class="hideBtn">
-            <input id="upfile" type="file">
-          </div>
-          <input type="submit" id="submit" value='Get Info'>
-        </form>
+          {% csrf_token %}
+        <div class="uploadBtn" onClick="getFile()">Choose File</div>
+        <p class="fileName">No file chosen</p>
+        <div class="hideBtn">
+          <input id="upfile" type="file" name="myfile">
+        </div>
+        <input type="submit" id="submit" value='Get Info'>
+      </form>
 
       </div>
     </div>

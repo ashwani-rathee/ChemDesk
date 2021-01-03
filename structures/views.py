@@ -1,25 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 from . import get_molecule
 from django.shortcuts import render, redirect
 from .forms import *
-import os
 from rdkit import Chem
-import imolecule
+import os
 
-def home(request):
-    if request.method == 'POST':
-        form = structuresform(request.POST, request.FILES)
-
-        if form.is_valid():
-            form.save()
-            return redirect('data')
-    else:
-        form = structuresform()
-    return render(request, 'home.html',{'form': form})
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        return redirect('data')
+    return render(request, 'structures/index.html')
 
 def data(request):
     cmd = "java -jar ./structures/molvec-0.9.8-jar-with-dependencies.jar molvec -f ./structures/input/aldehyde.jpeg -o ./structures/result/aldehyde.mol"
@@ -65,19 +61,11 @@ def success(request):
 # Python program to view
 # for displaying images
 
-def display_hotel_images(request):
-
-	if request.method == 'GET':
-
-		# getting all the objects of hotel.
-		Hotels = Hotel.objects.all()
-		return render((request, 'display_hotel_images.html',
-					{'hotel_images' : Hotels}))
 def structure_compare(request):
-    return render(request,'structure_compare.html')
+    return render(request,'structures/structure_compare.html')
 
 def periodic_table(request):
-    return render(request,'periodic_table.html')
+    return render(request,'structures/periodic_table.html')
 
 def viewer(request):
-    return render(request,'viewer.html')
+    return render(request,'structures/viewer.html')
