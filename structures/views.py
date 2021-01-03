@@ -14,7 +14,7 @@ def index(request):
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
-        return redirect('data')
+        return redirect('viewer')
     return render(request, 'structures/index.html')
 
 def data(request):
