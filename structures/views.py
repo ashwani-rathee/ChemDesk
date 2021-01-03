@@ -75,3 +75,9 @@ def display_hotel_images(request):
 					{'hotel_images' : Hotels}))
 def structure_compare(request):
     return render(request,'structure_compare.html')
+
+def periodic_table(request):
+    return render(request,'periodic_table.html')
+
+def viewer(request):
+    return render(request,'viewer.html')
