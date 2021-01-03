@@ -73,3 +73,5 @@ def display_hotel_images(request):
 		Hotels = Hotel.objects.all()
 		return render((request, 'display_hotel_images.html',
 					{'hotel_images' : Hotels}))
+def structure_compare(request):
+    return render(request,'structure_compare.html')

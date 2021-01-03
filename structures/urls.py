@@ -11,4 +11,5 @@ urlpatterns = [
     path('data',views.data,name='data'),
     path('hotel_images', views.display_hotel_images, name = 'hotel_images'),
     path('moltopdb',views.moltopdb,name='moltopdb'),
+    path('structures_compare' ,views.structure_compare,name='structure_compare'),
 ]
