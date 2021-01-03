@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html manifest1="chemViewer.manifest1">
 <head>
 	<meta charset="UTF-8">
@@ -37,25 +37,7 @@
 	</style>
 
     <link id="mol2" href="{% static 'data.mol' %}" type="chemical/x-mdl-molfile" />
-	<script name="mol1" id="mol1" type="chemical/x-mdl-molfile">
-Untitled Document-2
-  Kekule  07101201153D
-
-  6  5  0  0  0  0  0  0  0  0999 V2000
-   -0.3586    0.0000   -0.1337 C   0  0  0  0  0  0  0  0  0  0  0  0
-    1.0564    0.0000   -0.1337 O   0  0  0  0  0  0  0  0  0  0  0  0
-   -0.6779    0.0000   -1.1978 H   0  0  0  0  0  0  0  0  0  0  0  0
-   -0.6779    0.9530    0.3397 H   0  0  0  0  0  0  0  0  0  0  0  0
-   -0.6779   -0.9530    0.3397 H   0  0  0  0  0  0  0  0  0  0  0  0
-    1.3358    0.0000    0.7858 H   0  0  0  0  0  0  0  0  0  0  0  0
-  1  2  1  0
-  1  3  1  0
-  1  4  1  0
-  1  5  1  0
-  2  6  1  0
-M  END
-
-	</script>
+	
 
 	<script>
 		var chemViewer;
@@ -88,4 +70,116 @@ M  END
 			 data-toolbar-evoke-modes="[0]"
 			 data-chem-obj="url(#mol2)"></div>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChemDesk</title>
+    {% load static %}
+    <script>var Kekule = require('kekule').Kekule;</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="{% static 'structures/js/Three.js' %}"></script>
+    <script src="{% static 'structures/js/kekule/kekule.js' %}"></script>
+    <script src="{% static 'structures/js/kekule/kekule.js?modules=chemWidget,openbabel' %}"></script>
+    <script src="{% static 'structures/js/kekule/themes/default/kekule.css' %}"></script>
+    <style>
+      html, body
+      {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+      }
+      #chemViewer
+      {
+        border: none;
+        margin: 0;
+      }
+      #header
+      {
+        padding: 0.2em 1em;
+        overflow: hidden;
+        vertical-align: middle;
+      }
+      #header button, #header span
+      {
+        display: inline-block;
+      }
+    </style>
+    <link id="mol2" href="{% static 'data.mol' %}" type="chemical/x-mdl-molfile" />
+	
+
+    <script>
+      var chemViewer;
+      function init()
+      {
+        chemViewer = Kekule.Widget.getWidgetById('chemViewer');
+        // adjust size
+        adjustSize();
+  
+        window.onresize = adjustSize;
+  
+        Kekule.Widget.getWidgetById('btnOpenBabel').addEventListener('execute', function(e){
+          Kekule.IO.enableOpenBabelFormats();
+        });
+      }
+      function adjustSize()
+      {
+        var dim = Kekule.HtmlElementUtils.getViewportDimension(document);
+        var headerDim = Kekule.HtmlElementUtils.getElemClientDimension(document.getElementById('header'));
+        chemViewer.setWidth(dim.width - 10 + 'px').setHeight(dim.height - 10 - headerDim.height + 'px');
+      }
+  
+      Kekule.X.domReady(init);
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="{% static 'structures/css/viewer.css' %}" />
+  </head>
+
+  <body>
+    <div id="loader">
+      <lottie-player
+        src="https://assets2.lottiefiles.com/packages/lf20_Gh0AU0.json"
+        background="#0a192f"
+        speed="1.5"
+        style="z-index: 999"
+        loop
+        autoplay
+      ></lottie-player>
+    </div>
+    <div class="HomeSection">
+      <div class="infoSection">
+        <div class="srcImg">
+          <img src="./aspirin.png" />
+        </div>
+        <div class="textInfo">
+          <h3><span>IUPAC: </span>2-Acetyloxybenzoic acid</h3>
+          <h3><span>Smile: </span>CC(=O)Oc1ccccc1C(=O)O</h3>
+          <h3><span>PubChem CID : </span>2244</h3>
+          <h3><span>Molecular Formula: </span>C9H8O4</h3>
+          <h3><span>Molecular Weight: </span>180.16 g/mol</h3>
+          <h3><span>Formal Charge: </span>0</h3>
+          <h3><span>Toxicity: </span>0.342</h3>
+          <h3><span>Solubility: </span>0.478</h3>
+        </div>
+        <div class="modelbtns">
+          <a>Toxicity Model</a>
+          <a>Solubility Model</a>
+          <a>PubChem Data</a>
+        </div>
+      </div>
+      <div class="viewerSection">
+        <div class="container-fluid" id="chemViewer" style="width:500px;height:300px"
+			 data-widget="Kekule.ChemWidget.Viewer3D" data-enable-toolbar="true" data-auto-size="false" data-padding="20"
+			 data-toolbar-evoke-modes="[0]"
+			 data-chem-obj="url(#mol2)"></div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+	<script type="text/javascript" src="{% static 'structures/js/viewer.js' %}"></script>
+  </body>
 </html>

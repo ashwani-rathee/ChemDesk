@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Calibre';
+}
+
+#loader {
+    background: #0a192f;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+    transition: 0.5s;
+    user-select: none;
+}
+
+#loader lottie-player {
+    background: #0a192f;
+    z-index: 999;
+    width: 40%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+}
+
+.HomeSection {
+    display: flex;
+    /* background: #0a192f; */
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.infoSection {
+    background: #0a192f;
+    transition: 0.5s;
+    width: 30%;
+    height: 100%;
+    padding: 4% 6% 0;
+}
+
+.srcImg {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.srcImg img {
+    width: 100%;
+}
+
+.textInfo {
+    color: #fff;
+    /* font-family: 'SF Mono'; */
+    padding: 10% 8% 0;
+    /* text-align: center; */
+}
+
+.textInfo h3 {
+    font-weight: 300;
+    font-size: 18px;
+    text-shadow: 2px 2px 4px #000;
+    margin: 3% 0;
+}
+
+.textInfo h3 span {
+    font-weight: 400;
+    color: #64ffda;
+}
+
+.modelbtns {
+    display: none;
+    padding: 5% 0 0;
+}
+
+.modelbtns a {
+    font-family: 'SF Mono';
+    text-align: center;
+    padding: 2% 3%;
+    font-size: 11px;
+    cursor: pointer;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #64ffda;
+    border-radius: 3px;
+    transition: 0.3s;
+    margin: 1%; 
+}
+
+.modelbtns a:hover {
+    background: rgba(100, 255, 218, 0.2);
+}
+
+.viewerSection {
+    background: #fff;
+    width: 50%;
+    transition: 0.5s;
+    height: 100%;
+    opacity: 0;
+}
