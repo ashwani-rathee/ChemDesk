@@ -1,0 +1,241 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Calibre';
+}
+
+#loader {
+	background: #0a192f;
+	width: 100%;
+	height: 100vh;
+	z-index: 999;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	opacity: 1;
+	transition: 0.5s;
+	user-select: none;
+}
+
+#loader lottie-player{
+	background: #0a192f;
+	z-index: 999;
+	width: 40%;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+}
+
+.HomeSection{
+	display: flex;
+	background: #0a192f;
+	height: 100vh;
+	width: 100%;
+	overflow: hidden;
+}
+
+.Info {
+	width: 100%;
+	height: 100vh;
+}
+
+.getInfo {
+	/*background: #1b1b1b;*/
+	background: #0a192f;
+	transition: 0.5s;
+	/*opacity: 0;*/
+}
+
+.beforeStart {
+	opacity: 0;
+	transition: 1s;
+	padding: 5% 12% 0;
+	text-align: center;
+
+}
+
+/*.getInfo h2 {
+	color: #eee;
+	font-size: 3rem;
+	border-bottom: 1px solid #1cb9b1;
+	width: 100%;
+}
+*/
+.beforeStart h1 {
+	color: #eee;
+	font-size: 3.5rem;
+	font-weight: bold;
+	/*border-bottom: 1px solid #1cb9b1;*/
+	transform: translateY(10px);
+	user-select: none;
+}
+
+.beforeStart h1 span{
+	/*color: #1cb9b1;*/
+	color: #64ffda;
+}
+
+.beforeStart lottie-player{
+	transition: 0.3s;
+}
+
+.bDescription{
+	/*font-family: 'Calibre';*/
+	font-size: 18px;
+	color: #cdcdcd;
+	margin: 0% 0 0% 0;
+	letter-spacing: 1.2px;
+	line-height: 24px;
+    user-select: none;
+}
+
+.beforeStart .uploadBtn {
+	font-family: 'SF Mono';
+	display: inline-block;
+    text-align: center;
+    padding: 1% 3%;
+ 	font-size: 15px;
+	cursor:pointer;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #64ffda;
+    border-radius: 3px;
+    transition: 0.3s;
+    margin-top: 3%;
+}
+
+.beforeStart .uploadBtn:hover {
+    color: #fff;
+    background: rgba(100, 255, 218, 0.2);
+}
+
+.afterStart {
+	display: none;
+	opacity: 0;
+	transition: 1s;
+	padding: 13% 13% 0;
+	height: 100%;
+	box-shadow: 5px 0 5px -5px rgba(0,0,0,0.7), -5px 0 5px -5px rgba(0,0,0,0.7);
+}
+
+.afterStart h1 {
+	color: #eee;
+	font-size: 4rem;
+	font-weight: bold;
+	/*border-bottom: 1px solid #1cb9b1;*/
+	transform: translateY(10px);
+    user-select: none;
+}
+
+.afterStart h1 span{
+	/*color: #1cb9b1;*/
+	color: #64ffda;
+}
+
+.aDescription {
+	color: #cdcdcd;
+	letter-spacing: 1.2px;
+	line-height: 24px;
+    user-select: none;
+}
+
+
+.afterStart h2 {
+	color: #eee;
+	font-weight: bold;
+	margin: 10% 0 0;
+    user-select: none;
+}
+
+.form {
+	display: flex;
+	margin-top: 3%;
+}
+
+.afterStart .uploadBtn {
+	font-family: 'SF Mono';
+	display: inline-block;
+    text-align: center;
+    padding: 1% 3%;
+ 	font-size: 15px;
+	cursor:pointer;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #64ffda;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.afterStart .uploadBtn:hover {
+    color: #fff;
+    background: rgba(100, 255, 218, 0.2);
+}
+
+.hideBtn {
+	height: 0px;
+	width:0px;
+	overflow:hidden;
+}
+
+#submit {
+    background: transparent;
+    border: 1px solid #64ffda;
+    border-radius: 3px;
+    transition: 0.3s;
+    text-align: center;
+    outline: none;
+    color: #fff;
+    margin: 0 0 0 2%;
+    padding: 0 2%;
+    font-family: 'SF Mono';
+    text-transform: capitalize;
+}
+
+#submit:hover {
+    color: #fff;
+    background: rgba(100, 255, 218, 0.2);
+}
+
+.fileName{
+	color: #a6a6a6;
+	margin: 1% 0 0 1%;
+	line-height: 24px;
+	font-size: 21px;
+    user-select: none;
+}
+
+.displayInfo {
+	transition: 0.5s;
+	display: none;
+	width: 50%;
+	height: 100vh;
+}
+
+.preview {
+
+}
+
+.preview dotlottie-player{
+	width: 113%;
+	height: 100vh;
+	transform: translateX(9%);
+}
+/*
+.fixArrow {
+	position: absolute;
+	display: none;
+	opacity: 0;
+	top: 50vh;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	transition: 1s;
+}
+.fixArrow lottie-player{
+	width: 100px;
+	height: 100px;
+	transform: rotateZ(90deg);
+}*/
