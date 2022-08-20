@@ -1,41 +1,57 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 from . import get_molecule
 from django.shortcuts import render, redirect
 from .forms import *
-import os
 from rdkit import Chem
+import os
+import pubchempy as pcp
 
-def home(request):
-    if request.method == 'POST':
-        form = structuresform(request.POST, request.FILES)
-
-        if form.is_valid():
-            form.save()
-            return redirect('data')
-    else:
-        form = structuresform()
-    return render(request, 'home.html',{'form': form})
 # Create your views here.
+def index(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        cmd = "java -jar ./structures/molvec-0.9.8-jar-with-dependencies.jar molvec -f ./structures/media/" + filename +" -o ./structures/static/data.mol"
+        result = os.system(cmd)
+        cmd1 = "cp ./structures/media/"+filename+" structures/static/image.png"
+        result = os.system(cmd1)
+        if result == 0:
+            cmd = "rm ./structures/media/" + filename
+            os.system(cmd)
+        m = Chem.MolFromMolFile('structures/static/data.mol')
+        smile = Chem.MolToSmiles(m)
+        return redirect('viewer')
+    return render(request, 'structures/index.html')
 
 def data(request):
-    cmd = "./structures/imago_console structures/media/imagees/data.png -o structures/result/data.mol"
+
+    cmd = "java -jar ./structures/molvec-0.9.8-jar-with-dependencies.jar molvec -f ./structures/media/" + filename +" -o ./structures/static/data.mol"
     returned_value = os.system(cmd)
-    m = Chem.MolFromMolFile('structures/result/data.mol')
+    m = Chem.MolFromMolFile('structures/static/data.mol')
     smile = Chem.MolToSmiles(m)
-    return HttpResponse(smile)
+    return redirect('viewer')
 def getmol(request):
-    cmd = "./structures/imago_console structures/input/data.png -o structures/result/data.mol"
+    cmd = "java -jar ./structures/molvec-0.9.8-jar-with-dependencies.jar molvec -f ./structures/input/aldehyde.jpeg -o ./structures/result/aldehyde.mol"
     returned_value = os.system(cmd)
     print(returned_value)
     return HttpResponse('Success')
 
 def moltosmile(request):
-    m = Chem.MolFromMolFile('structures/result/data.mol')
+    m = Chem.MolFromMolFile('structures/result/aldehyde.mol')
     smile = Chem.MolToSmiles(m)
     print(smile)
     return HttpResponse(smile)
 
+def moltopdb(request):
+    m = Chem.MolFromMolFile('structures/result/aldehyde.mol')
+    m = Chem.AddHs(m)
+    x=Chem.rdmolfiles.MolToPDBFile(m, filename='aldehyde.pdb')
+    print(x)
+    return HttpResponse(x)
 
 # Create your views here.
 def structures_view(request):
@@ -56,11 +72,28 @@ def success(request):
 # Python program to view
 # for displaying images
 
-def display_hotel_images(request):
+def structure_compare(request):
+    return render(request,'structures/structure_compare.html')
 
-	if request.method == 'GET':
+def periodic_table(request):
+    return render(request,'structures/periodic_table.html')
 
-		# getting all the objects of hotel.
-		Hotels = Hotel.objects.all()
-		return render((request, 'display_hotel_images.html',
-					{'hotel_images' : Hotels}))
+def viewer(request):
+    m = Chem.MolFromMolFile('structures/result/aldehyde.mol')
+    smile = Chem.MolToSmiles(m)
+    c = pcp.Compound.from_cid(5000)
+    print(c.molecular_formula,"  ",c.molecular_weight)
+    context = {
+        'iupac_name': c.iupac_name,
+        'smiles': c.canonical_smiles,
+        'pubchemcid': c.cid,
+        'Molecular_formula': c.molecular_formula,
+        'Molecular_weight': c.molecular_weight,
+        'formalcharge': c.charge,
+        'toxicity': True,
+        'solubility': True,
+    }
+    return render(request,'structures/viewer.html', context)
+
+def about_us(request):
+    return render(request,'structures/about_us.html')
